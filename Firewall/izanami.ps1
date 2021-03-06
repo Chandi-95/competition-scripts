@@ -25,9 +25,9 @@ netsh advfirewall firewall add rule name="Windows Remote Management (HTTP-out)" 
 netsh advfirewall firewall add rule name="Windows Remote Management - Cloud (HTTP-In)" dir=in protocol=tcp remoteport=5985 action=allow
 netsh advfirewall firewall add rule name="Windows Remote Management - Cloud (HTTP-out)" dir=out protocol=tcp remoteport=5985 action=allow 
 
-# RDP - to reach remote, specify destinaton ip's
-netsh advfirewall firewall add rule name="RDP" dir=in protocol=tcp remoteport=3389 action=allow remoteip=$cloudip
-netsh advfirewall firewall add rule name="RDP" dir=out protocol=tcp remoteport=3389 action=allow remoteip=$cloudip
+# RDP - to reach remote
+netsh advfirewall firewall add rule name="RDP" dir=in protocol=tcp remoteport=3389 action=allow remoteip=172.16.2.13,172.16.2.22
+netsh advfirewall firewall add rule name="RDP" dir=out protocol=tcp remoteport=3389 action=allow remoteip=172.16.2.13,172.16.2.22
 
 # IIS Remote Management - out 
 netsh advfirewall firewall add rule name="IIS Remote Management" dir=out action=allow protocol=TCP remoteport=8172

@@ -17,11 +17,20 @@ netsh advfirewall firewall add rule name="AD-udp-in" action=allow protocol=udp l
 netsh advfirewall firewall add rule name="AD-tcp-out" action=allow protocol=tcp localport=389,445,88,135,3268 dir=out
 netsh advfirewall firewall add rule name="AD-udp-out" action=allow protocol=udp localport=389,445,88,135,123 dir=out
 
+# WinRM - to scoring machines
+netsh advfirewall firewall add rule name="Windows Remote Management (HTTP-In)" dir=in protocol=tcp localport=5985 action=allow remoteip=172.16.128.0/17
+netsh advfirewall firewall add rule name="Windows Remote Management (HTTP-out)" dir=out protocol=tcp localport=5985 action=allow remoteip=172.16.128.0/17
+
+# WinRM - to cloud machines
+netsh advfirewall firewall add rule name="Windows Remote Management - Cloud (HTTP-In)" dir=in protocol=tcp remoteport=5985 action=allow
+netsh advfirewall firewall add rule name="Windows Remote Management - Cloud (HTTP-out)" dir=out protocol=tcp remoteport=5985 action=allow 
+
+# RDP - to reach remote, specify destinaton ip's
+netsh advfirewall firewall add rule name="RDP" dir=in protocol=tcp remoteport=3389 action=allow remoteip=$cloudip
+netsh advfirewall firewall add rule name="RDP" dir=out protocol=tcp remoteport=3389 action=allow remoteip=$cloudip
+
+# IIS Remote Management - out 
 netsh advfirewall firewall add rule name="IIS Remote Management" dir=out action=allow protocol=TCP remoteport=8172
-
-# WinRM to reach remote?
-
-# RDP to reach remote? 
 
 netsh advfirewall set allprofiles logging filename $HOME\Desktop\fw.log
 netsh advfirewall set allprofiles logging maxfilesize 32676

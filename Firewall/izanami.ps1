@@ -8,8 +8,8 @@ netsh advfirewall firewall add rule name="ICMP" dir=in action=allow protocol=icm
 netsh advfirewall firewall add rule name="ICMP" dir=out action=allow protocol=icmpv4:8,any
 
 # DNS
-netsh advfirewall firewall add rule name="DNS" dir=out action=allow protocol=udp localport=53 remoteport=53 enable=yes profile=any action=allow
-netsh advfirewall firewall add rule name="DNS" dir=in action=allow protocol=udp localport=53 remoteport=53 enable=yes profile=any action=allow
+netsh advfirewall firewall add rule name="DNS" dir=out protocol=udp localport=53 remoteport=53 action=allow
+netsh advfirewall firewall add rule name="DNS" dir=in protocol=udp localport=53 remoteport=53 action=allow
 
 # AD Services
 netsh advfirewall firewall add rule name="AD-tcp-in" action=allow protocol=tcp localport=389,445,88,135,3268 dir=in 

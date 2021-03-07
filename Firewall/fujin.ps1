@@ -33,12 +33,12 @@ netsh advfirewall firewall add rule name="HTTP-out" dir=out protocol=tcp localpo
 netsh advfirewall firewall add rule name="IIS Remote Management" dir=in action=allow protocol=TCP localport=8172
 
 # MariaDB - port 3306 to the database server
-netsh advfirewall firewall add rule name="DB-in" dir=in protocol=tcp remoteport=3306 action=allow
-netsh advfirewall firewall add rule name="DB-out" dir=out protocol=tcp remoteport=3306 action=allow
+netsh advfirewall firewall add rule name="DB-in" dir=in protocol=tcp remoteport=3306 action=allow remoteip=172.16.2.11
+netsh advfirewall firewall add rule name="DB-out" dir=out protocol=tcp remoteport=3306 action=allow remoteip=172.16.2.11
 
 # WinRM - so it can be reached from Windows 10 client
-netsh advfirewall firewall add rule name="Windows Remote Management (HTTP-In)" dir=in protocol=tcp localport=5985 action=allow remoteip=10.2.1.3 
-netsh advfirewall firewall add rule name="Windows Remote Management (HTTP-out)" dir=out protocol=tcp localport=5985 action=allow remoteip=10.2.1.3
+netsh advfirewall firewall add rule name="Windows Remote Management (HTTP-In)" dir=in protocol=tcp localport=5985,5986 action=allow remoteip=10.2.1.3 
+netsh advfirewall firewall add rule name="Windows Remote Management (HTTP-out)" dir=out protocol=tcp localport=5985,5986 action=allow remoteip=10.2.1.3
 
 # RDP - so it can be reached from Windows 10 client
 netsh advfirewall firewall add rule name="RDP-in" dir=in protocol=tcp localport=3389 action=allow remoteip=10.2.1.3

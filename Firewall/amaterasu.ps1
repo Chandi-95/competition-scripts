@@ -41,12 +41,12 @@ netsh advfirewall firewall add rule name="IMAP" dir=out protocol=tcp localport=1
 # Some more sick rules for managing hMailServer remotely
 
 # MariaDB - port 3306 to the database server
-netsh advfirewall firewall add rule name="DB-in" dir=in protocol=tcp remoteport=3306 action=allow
-netsh advfirewall firewall add rule name="DB-out" dir=out protocol=tcp remoteport=3306 action=allow
+netsh advfirewall firewall add rule name="DB-in" dir=in protocol=tcp remoteport=3306 action=allow remoteip=172.16.2.11
+netsh advfirewall firewall add rule name="DB-out" dir=out protocol=tcp remoteport=3306 action=allow remoteip=172.16.2.11
 
 # WinRM - so it can be reached from DC server
-netsh advfirewall firewall add rule name="Windows Remote Management (HTTP-In)" dir=in protocol=tcp localport=5985 action=allow remoteip=10.2.1.2 
-netsh advfirewall firewall add rule name="Windows Remote Management (HTTP-out)" dir=out protocol=tcp localport=5985 action=allow remoteip=10.2.1.2
+netsh advfirewall firewall add rule name="Windows Remote Management (HTTP-In)" dir=in protocol=tcp localport=5985,5986 action=allow remoteip=10.2.1.2 
+netsh advfirewall firewall add rule name="Windows Remote Management (HTTP-out)" dir=out protocol=tcp localport=5985,5986 action=allow remoteip=10.2.1.2
 
 # RDP - so it can be reached from DC server
 netsh advfirewall firewall add rule name="RDP-in" dir=in protocol=tcp localport=3389 action=allow remoteip=10.2.1.2

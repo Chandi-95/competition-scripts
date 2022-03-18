@@ -1,6 +1,19 @@
 :: Audit policy
 auditpol /set /category:* /success:enable /failure:enable
 
+:: Disable Guest user + rename
+net user Guest /active:no
+wmic useraccount where "name='Guest'" rename oof
+
+:: Rename Administrator
+wmic useraccount where "name='Administrator'" rename xAdmin
+
+:: Create backup admin(s)
+net user yoinky Placeholderpw123! /add
+net user sploinky Placeholderpw123! /add
+net localgroup Administrators yoinky /add
+net localgroup Administrators sploinky /add
+
 :: Powershell logging
 mkdir C:\scrips
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ModuleLogging" /v EnableModuleLogging /t REG_DWORD /d 1 /f

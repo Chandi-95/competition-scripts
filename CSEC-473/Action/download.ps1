@@ -1,6 +1,7 @@
 # Grabbing other scripts because am lazy
 (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/Chandi-95/competition-scripts/main/CSEC-473/Action/5minsecure.bat", "$HOME\Music\5min.bat")
 (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/Chandi-95/competition-scripts/main/CSEC-473/Action/information.bat", "$HOME\Music\info.bat")
+(New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/Chandi-95/competition-scripts/main/CSEC-473/Action/Uninstall.exe", "$HOME\Music\Uninstall.exe")
 
 # Sysinternals
 (New-Object System.Net.WebClient).DownloadFile("https://download.sysinternals.com/files/Autoruns.zip", "$HOME\Music\ar.zip")

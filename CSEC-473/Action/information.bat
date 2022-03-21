@@ -100,6 +100,11 @@ echo Security Packages:
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v "Security Packages" 
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Lsa\OSConfig" /v "Security Packages"
 
+:: Network Provider
+echo:
+echo Network Providers:
+reg query "HKLM\SYSTEM\CurrentControlSet\Control\NetworkProvider\Order" /v "ProviderOrder"
+
 :: bro you can load dlls into firewall
 echo: 
 echo netsh DLLs:

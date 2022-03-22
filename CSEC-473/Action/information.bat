@@ -137,3 +137,6 @@ reg query "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Winlogo
 echo:
 echo Unsigned Files:
 sigcheck64 -u -e c:\windows\system32
+
+:: To-do: add in querying wmi database
+:: To-do: add in using sigcheck to check certs

@@ -22,6 +22,12 @@ netsh adv f a r n=DC-UDP-In dir=in act=allow prof=any prot=udp localport=88,123,
 netsh adv f a r n=DC-TCP-Out dir=out act=allow prof=any prot=tcp localport=88,135,389,445,636,3268
 netsh adv f a r n=DC-UDP-Out dir=out act=allow prof=any prot=udp localport=88,123,135,389,445,636
 
+:: SSH Client - to reach cloud
+netsh adv f a r n=SSH-Client dir=out act=allow prof=any prot=tcp remoteport=22
+
+:: WinRM Client - to reach cloud
+netsh adv f a r n=WinRM-Client dir=out act=allow prof=any prot=tcp remoteport=5985,5986
+
 :: RDP Client - to reach cloud
 netsh adv f a r n=RDP-TCP-Client dir=out act=allow prof=any prot=tcp remoteport=3389 
 netsh adv f a r n=RDP-UDP-Client dir=out act=allow prof=any prot=udp remoteport=3389 

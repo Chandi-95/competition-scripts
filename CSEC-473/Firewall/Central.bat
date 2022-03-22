@@ -14,20 +14,17 @@ netsh adv f a r n=HTTP-Client dir=out act=allow prof=any prot=tcp remoteport=80,
 
 :: DNS
 netsh adv f a r n=DNS-Client dir=out act=allow prof=any prot=udp remoteport=53
+netsh adv f a r n=DNS-Server dir=in act=allow prof=any prot=udp localport=53
 
 :: AD Services 
-netsh adv f a r n=DC-TCP-In dir=in act=allow prof=any prot=tcp remoteport=88,135,389,445,636,3268
-netsh adv f a r n=DC-UDP-In dir=in act=allow prof=any prot=udp remoteport=88,123,135,389,445,636
-netsh adv f a r n=DC-TCP-Out dir=out act=allow prof=any prot=tcp remoteport=88,135,389,445,636,3268
-netsh adv f a r n=DC-UDP-Out dir=out act=allow prof=any prot=udp remoteport=88,123,135,389,445,636
+netsh adv f a r n=DC-TCP-In dir=in act=allow prof=any prot=tcp localport=88,135,389,445,636,3268
+netsh adv f a r n=DC-UDP-In dir=in act=allow prof=any prot=udp localport=88,123,135,389,445,636
+netsh adv f a r n=DC-TCP-Out dir=out act=allow prof=any prot=tcp localport=88,135,389,445,636,3268
+netsh adv f a r n=DC-UDP-Out dir=out act=allow prof=any prot=udp localport=88,123,135,389,445,636
 
-:: ICMP/Ping
-netsh adv f a r n=PingIn dir=in act=allow prof=any prot=icmpv4:8,any 
-netsh adv f a r n=PingOut dir=out act=allow prof=any prot=icmpv4:8,any 
-
-:: WinRM
-:: netsh adv f a r n=WinRM-Client dir=out act=allow prof=any prot=tcp remoteport=5985,5986
-netsh adv f a r n=WinRM-Server dir=in act=allow prof=any prot=tcp localport=5985,5986
+:: RDP Client - to reach cloud
+netsh adv f a r n=RDP-TCP-Client dir=out act=allow prof=any prot=tcp remoteport=3389 
+netsh adv f a r n=RDP-UDP-Client dir=out act=allow prof=any prot=udp remoteport=3389 
 
 :: Turn on firewall and default block
 netsh advfirewall set allprofiles state on

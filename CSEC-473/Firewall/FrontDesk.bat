@@ -36,3 +36,5 @@ netsh advfirewall set allprofiles firewallpolicy blockinbound,blockoutbound
 :: Lockout prevention
 timeout 60
 netsh advfirewall set allprofiles state off
+
+netsh advfirewall firewall delete rule name=all
